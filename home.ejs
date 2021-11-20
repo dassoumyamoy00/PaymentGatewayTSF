@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>weCare Charitable Trust Ltd.</title>
+    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+</head>
+
+<body>
+
+
+    <div class="popup" id="popup">
+
+        <div class="out2">
+
+            <img src="/static/box.jpg" alt="donation image" class="popupImage">
+
+            <div class="entries">
+                <div class="popupPrompt">NAME<span class="c4">*</span></div>
+                <input type="text" name="name" class="popupInput" id="name" required placeholder="Enter your name">
+            </div>
+
+            <div class="entries">
+                <div class="popupPrompt">MOBILE<span class="c4">*</span></div>
+                <input type="text" name="mobno" class="popupInput" id="mobno" required
+                    placeholder="Enter your mobile number" pattern="[0-9]{1,}">
+            </div>
+
+            <div class="entries">
+                <div class="popupPrompt">EMAIL<span class="c4">*</span></div>
+                <input type="email" name="email" class="popupInput" id="email" required
+                    placeholder="Enter your email id">
+            </div>
+
+            <div class="entries">
+                <div class="popupPrompt">AMOUNT<span class="c4">*</span></div>
+                <input type="number" name="amount" class="popupInput" id="amount" required
+                    placeholder="Enter the amount(INR)" min="1">
+            </div>
+
+            <button class="popupBtn" id="pay" type="submit" onclick="chkValidity()">PAY NOW</button>
+        </div>
+
+        <div class="cross"><i class="fas fa-times" onclick="popupWindow()"></i></div>
+
+    </div>
+
+
+    <nav class="navigation max-width-1 m-auto" id="nav">
+        <div class="nav-left">
+            <span class="weCare"><a href="#home" style="color: white; text-decoration: none;">weCare</a></span>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href=#about>About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="home">
+
+        <div style="height: 100px;"></div>
+
+
+
+        <div class="part1">
+
+            <div class="part1img">
+                <img src="/static/home.png" alt="donation image">
+            </div>
+            <div class="content">
+                <div class="heading">#TimeToDonate</div>
+
+                <div class="body">
+                    Why Delay? Donate Now for a Good Cause! Every Cent that you donate will be devoted for the well
+                    being of
+                    the poor and needy. Your little amount can change the fortune of several others!
+                </div>
+
+                <button class="donateNow" onclick="popupWindow()">Donate Now</button>
+                <br>
+                <button class="downloadReceipt" onclick="downloadReceipt()">Download Receipt</button>
+
+            </div>
+
+        </div>
+
+
+
+        <section id="about">
+
+            <div style="height: 80px;"></div>
+
+            <h2>About Us</h2>
+
+            <div class="part2">
+
+                <div class="content10">
+                    <span class="weCare2">weCare </span>aims to bridge the gap between the people who want to make a
+                    difference through giving
+                    back
+                    and those who are doing phenomenal work but need more support. Our focus has been to build trust for
+                    the
+                    social sector by strong due diligence of all our nonprofit partners, and transparency on how
+                    donations
+                    impacted lives on the ground.
+                    <br><br>
+
+                    We are proud to have played a small role in enabling giving across all segments of our society -
+                    everyday
+                    givers, (U)HNI givers, corporates and foundations. We have enabled giving
+                    through
+                    marathons, galas, giving pledges, payroll giving, crowdfunding, CSR grant
+                    management, collective giving, disaster response etc.
+                    <br><br>
+
+                    We will continue to stay tuned to the needs on the ground, innovate for scale, and find ways of
+                    inspiring
+                    every person who can to give back. India is a country that is rich in so many resources. There is no
+                    reason
+                    for 300 million citizens to continue to live below the poverty line.
+                    <br><br>
+
+                    Join us in working towards our dream of seeing a poverty-free India within our lifetimes!
+                </div>
+
+                <div class="tile">
+                    <img src="/static/food.png">
+                    <div class="text">
+                        <span class="head1">#NoChildHungry</span>
+                        <br>Help feed the poor <br>
+
+                        <ul>
+                            <li>Save a child from malnutrition</li>
+                            <li>Reduce risk of Covid-19 in poor children</li>
+                            <li>Help Eradicate Hunger</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <img src="/static/elderly.jpg">
+                    <div class="text">
+                        <span class="head1">#ElderlyLivesMatter</span>
+                        <br>Support vulnerable elderly<br>
+
+                        <ul>
+                            <li>Give them proper nutrition</li>
+                            <li>Provide supplements & medications for good health</li>
+                            <li>Provide monthly essentials and other support</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <img src="/static/disability.jpg">
+                    <div class="text">
+                        <span class="head1">#EqualityInDisability</span>
+                        <br>Support the differentially abled <br>
+
+                        <ul>
+                            <li>Belong to the mainstream</li>
+                            <li>Provide special education, therapies and counselling</li>
+                            <li>Live with Dignity</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <img src="/static/education.jpg">
+                    <div class="text">
+                        <span class="head1">#EducationForAll</span>
+                        <br>Contribute to a better society <br>
+
+                        <ul>
+                            <li>Help poor childern learn in school</li>
+                            <li>Help every child to purchase their books and pens</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <img src="/static/women.jpg">
+                    <div class="text">
+                        <span class="head1">#SupportForWomen</span>
+                        <br>Stand against gender diversity<br>
+
+                        <ul>
+                            <li>Promote girl child education in villages</li>
+                            <li>Make sanitary napkins affordable for all</li>
+                            <li>Provide financial aids to victims</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <img src="/static/shelter.jpg">
+                    <div class="text">
+                        <span class="head1">#NoIndianHomeless</span>
+                        <br>Every person should have their roof<br>
+
+                        <ul>
+                            <li>Help us to construct shelter homes</li>
+                            <li>Reduce deaths during natural disasters</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <div class="part3">
+            <div id="contact" style="height: 90px"></div>
+
+
+            <div class="col1">
+                <div class="last">
+                    <span class="weCare3">weCare </span> Charitable Trust Ltd.
+                </div>
+
+                <div class="quoteout">
+                    <i class="fas fa-quote-left"></i>
+                    <div class="quote">
+                        Every Charitable Act Is A Stepping Stone Towards Heaven
+                    </div>
+                    <div class="mother"> - Henry Ward Beecher</div>
+                </div>
+
+                <div class="icons">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/feed/" target="_blank"><i class="fab fa-linkedin"></i></a>
+
+                </div>
+
+
+            </div>
+
+            <div class="col2">
+
+                <div class="tel"><i class="fas fa-phone-alt"></i> +91-8101-4xxxx</div>
+                <div class="email"><i class="fas fa-envelope-square"></i> someone@example.com</div>
+                <div class="address">
+                    <i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal, India
+                </div>
+
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d471218.3856068807!2d88.04953025510093!3d22.67638575409385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f882db4908f667%3A0x43e330e68f6c2cbc!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1637071023845!5m2!1sen!2sin"
+                    loading="lazy" class="map">
+                </iframe>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        function chkValidity() {
+            const s1 = document.getElementById("name").value;
+            const s3 = document.getElementById("mobno").value;
+            const s2 = document.getElementById("email").value;
+            const s4 = document.getElementById("amount").value;
+
+            if (s1 === "" || s2 === "" || s3 === "" || s4 === "")
+                return alert("All fields are necessary");
+
+            let l = s1.length;
+            for (let i = 0; i < l; ++i) {
+                if (s1.charAt(i) < 'A' || s1.charAt(i) > 'Z') {
+                    if (s1.charAt(i) != ' ') {
+                        if (s1.charAt(i) < 'a' || s1.charAt(i) > 'z')
+                            return alert("Enter proper name");
+                    }
+                }
+            }
+
+            l = s3.length;
+
+            for (let i = 0; i < l; ++i)
+                if (s3.charAt(i) < '0' || s3.charAt(i) > '9')
+                    return alert("Enter proper mobile number");
+
+            l = s2.length; let at = 0, dot = 0;
+
+            for (let i = 0; i < l; ++i) {
+                if (s2.charAt(i) === '@')
+                    at = i;
+                else if (s2.charAt(i) === '.')
+                    dot = i;
+                else if ((s2.charAt(i) < 'A' && s2.charAt(i) > 'Z') && (s2.charAt(i) < 'a' && s2.charAt(i) > 'z'))
+                    return alert("Enter proper mail id");
+            }
+
+            if (at === 0 || dot === 0 || at === l - 1 || dot === l - 1 || dot < at || at === dot + 1)
+                return alert("Enter proper mail id");
+
+            let amt = Number(s4);
+            if (amt < 1) return alert("Minimum amount is Re. 1.00");
+
+            pay();
+        }
+
+        let popup = false;
+        function popupWindow() {
+            if (!popup) {
+                document.getElementById("popup").style.visibility = "visible";
+                popup = true;
+                document.getElementById("home").style.filter = "blur(25px)";
+                document.getElementById("nav").style.filter = "blur(25px)";
+                document.getElementById("home").style.pointerEvents = "none";
+                document.getElementById("nav").style.pointerEvents = "none";
+            }
+            else {
+                document.getElementById("popup").style.visibility = "hidden";
+                popup = false;
+                document.getElementById("home").style.pointerEvents = "visible";
+                document.getElementById("nav").style.pointerEvents = "visible";
+                document.getElementById("home").style.filter = "blur(0)";
+                document.getElementById("nav").style.filter = "blur(0)";
+            }
+        }
+
+
+
+        async function pay() {
+
+            const amount = Number(document.getElementById("amount").value);
+
+            const result1 = await fetch("/getOrderId", {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ amount: amount })
+            });
+
+            const t1 = await result1.json();
+
+            const myOrderId = t1.orderId;
+
+            var options = {
+                "key": "rzp_test_Ofbdxw5i9QfvYT",       //Razorpay Public key
+                "currency": "INR",                          //Currency
+                "name": "weCare Charitable Trust Ltd.",         //Organization name
+                "description": "weCare Donation",       //Transaction description
+                "order_id": myOrderId,
+                "handler": function (response) {
+                    let orderPayId = response.razorpay_payment_id;
+                    let orderSignature = response.razorpay_signature;
+                    saveData(myOrderId, orderPayId, orderSignature, new Date());
+                }
+            };
+
+            var razorpay = new Razorpay(options);
+            razorpay.on('payment.failed', (response) => {
+                alert(response.error.code + "\nSorry Payment Failed! Kindly Retry");
+            });
+
+            razorpay.open();        //Important line
+            // event.preventDefault();
+        }
+
+
+        async function saveData(myOrderId, orderPayId, orderSignature, sysdate) {
+
+            const name = document.getElementById("name").value;
+            const mobno = document.getElementById("mobno").value;
+            const email = document.getElementById("email").value;
+            const amount = Number(document.getElementById("amount").value);
+
+            popupWindow();
+
+            const result2 = await fetch("/saveDatabase", {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: name, mobno: mobno, email: email, amount: amount, date: sysdate, orderId: myOrderId, orderPayId: orderPayId, orderSignature: orderSignature })
+            });
+
+            const t2 = await result2.json(); //receive status and order
+
+            // const myOrderId=t2.orderId;
+
+            const status = t2.status;
+            if (status) {
+                alert("Payment Successful!\nYour Payment ID is : " + orderPayId + "\nYour Receipt will be generated in a few seconds.\nThank You!");
+                //generate pdf receipt
+
+                let mydate = sysdate;
+                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                const d = months[mydate.getMonth()] + " " + mydate.getDate() + " " + mydate.getFullYear() + " " + mydate.getHours() + ":" + mydate.getMinutes() + ":" + mydate.getSeconds();
+
+                var dataInvoice = {
+                    "documentTitle": "RECEIPT", //Defaults to INVOICE
+                    "locale": "en-IN", //Defaults to en-US, used for number formatting (see docs)
+                    "currency": "INR", //See documentation 'Locales and Currency' for more info
+                    "taxNotation": "gst", //or gst
+                    "marginTop": 25,
+                    "marginRight": 25,
+                    "marginLeft": 25,
+                    "marginBottom": 25,
+                    "logo": "https://asychlor.sirv.com/icon.png", //or base64
+                    "sender": {
+                        "company": "weCare Charitable Trust Ltd.",
+                        "address": "Kolkata",
+                        "zip": "",
+                        "city": "West Bengal",
+                        "country": "India"
+                    },
+                    "client": {
+                        "company": name,
+                        "address": mobno,
+                        "zip": email,
+                        "city": "",
+                        "country": "India"
+                    },
+                    "invoiceNumber": orderPayId,
+                    "invoiceDate": d,
+                    "products": [
+                        {
+                            "quantity": "1",
+                            "description": myOrderId,
+                            "tax": 0.0,
+                            "price": amount
+                        }
+                    ],
+                    "bottomNotice": "Payment made through Razorpay Gateway. <br><br>The payment is successful and verified. <br><br>Thank You for your Donation. See you again! <br><br>",
+                    "translate": {
+                        "invoiceNumber": "Payment ID",
+                        "invoiceDate": "Date",
+                        "products": "Order ID",
+                        "quantity": "Donations",
+                        "price": "Amount",
+                        "subtotal": "Total",
+                        "total": "Total Amount"
+                    }
+                };
+
+                let t = await easyinvoice.createInvoice(dataInvoice, function (result) {
+                    easyinvoice.download('Invoice.pdf', result.pdf);
+                });
+
+            }
+            else {
+                alert("Sorry! Payment Failed!\nIf any amount has been deducted, it will be refunded in a short time.\nThank You!");
+            }
+
+        }
+
+
+
+        async function downloadReceipt() {
+            var payId = prompt("Enter the Payment ID", "ex. ");
+
+            if (payId === null) return alert("Incorrect Payment ID. Thank You");
+
+            const result2 = await fetch("/fetchData", {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ orderPayId: payId })
+            });
+
+            const t2 = await result2.json();
+
+            if (!t2.found) return alert("Incorrect Payment ID. Thank You");
+
+            alert("Your invoice will be downloaded in a short time. Thank You");
+
+            let mydate = new Date(t2.date);
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const d = months[mydate.getMonth()] + " " + mydate.getDate() + " " + mydate.getFullYear() + " " + mydate.getHours() + ":" + mydate.getMinutes() + ":" + mydate.getSeconds();
+
+            var dataInvoice = {
+                "documentTitle": "RECEIPT", //Defaults to INVOICE
+                "locale": "en-IN", //Defaults to en-US, used for number formatting (see docs)
+                "currency": "INR", //See documentation 'Locales and Currency' for more info
+                "taxNotation": "gst", //or gst
+                "marginTop": 25,
+                "marginRight": 25,
+                "marginLeft": 25,
+                "marginBottom": 25,
+                "logo": "https://asychlor.sirv.com/icon.png", //or base64
+                "sender": {
+                    "company": "weCare Charitable Trust Ltd.",
+                    "address": "Kolkata",
+                    "zip": "",
+                    "city": "West Bengal",
+                    "country": "India"
+                },
+                "client": {
+                    "company": t2.name,
+                    "address": t2.mobno,
+                    "zip": t2.email,
+                    "city": "",
+                    "country": "India"
+                },
+                "invoiceNumber": t2.orderPayId,
+                "invoiceDate": d,
+                "products": [
+                    {
+                        "quantity": "1",
+                        "description": t2.myOrderId,
+                        "tax": 0.0,
+                        "price": t2.amount
+                    }
+                ],
+                "bottomNotice": "Payment made through Razorpay Gateway. <br><br>The payment is successful and verified. <br><br>Thank You for your Donation. See you again! <br><br>",
+                "translate": {
+                    "invoiceNumber": "Payment ID",
+                    "invoiceDate": "Date",
+                    "products": "Order ID",
+                    "quantity": "Donations",
+                    "price": "Amount",
+                    "subtotal": "Total",
+                    "total": "Total Amount"
+                }
+            };
+
+            easyinvoice.createInvoice(dataInvoice, function (result) {
+                easyinvoice.download('Invoice.pdf', result.pdf);
+            });
+        }
+
+
+    </script>
+
+</body>
+
+</html>
